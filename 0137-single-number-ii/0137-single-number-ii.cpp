@@ -1,29 +1,23 @@
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-        int size = nums.size();
-        int i=0;
-        sort(nums.begin(),nums.end());
-        int ans = 0;
-        while(i < size)
+        unordered_map<int,int> count;
+        
+        for(int i=0; i<nums.size();i++)
         {
-            int count = 1;
-            for(int j=i+1; j<size; j++)
-            {
-                if(nums[i] == nums[j])
-                {
-                    count++;
-                }
-            }
-           
-            if(count == 1)
-            {
-                ans = nums[i];
-            }
-
-            i = i + count;
+            count[nums[i]]++;
         }
-
+        
+        int ans = 0;
+        
+        for(auto it : count)
+        {
+            if(it.second == 1)
+            {
+                ans = it.first;
+            }
+        }
+        
         return ans;
     }
 };
