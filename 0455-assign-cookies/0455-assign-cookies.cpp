@@ -14,15 +14,15 @@ public:
                 i++;
             }
             
-            else if(g[i] < s[j])
-            {
-                i++;
-            }
-            
-            else
+            else if(g[i] > s[j])
             {
                 j++;
             }
+            
+            //else
+            //{
+              //  j++;
+            //}
             
         }
         
