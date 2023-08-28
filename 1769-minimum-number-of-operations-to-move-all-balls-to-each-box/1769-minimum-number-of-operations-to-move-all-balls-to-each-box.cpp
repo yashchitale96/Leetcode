@@ -3,17 +3,27 @@ public:
     vector<int> minOperations(string boxes) {
         vector<int> answer;
         
-        for(int i=0; i<boxes.size(); i++)
-        {   int a = 0;
-            for(int j=0; j<boxes.size(); j++)
+        int i=0, j=0;
+        int a = 0;
+        
+        while(i<boxes.size())
+        {
+            if(j<boxes.size())
             {
                 if(boxes[j] == '1' && i!=j)
                 {
-                    a += abs(j-i);
-                    
+                    a+=abs(j-i);
                 }
+                j++;
             }
-            answer.push_back(a);
+            
+            else
+            {
+                i++;
+                j=0;
+                answer.push_back(a);
+                a=0;
+            }
         }
         
         return answer;
