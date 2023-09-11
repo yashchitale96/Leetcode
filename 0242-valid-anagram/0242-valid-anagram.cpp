@@ -1,14 +1,33 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        sort(s.begin(),s.end());
-        sort(t.begin(),t.end());
+        //create freq array
+        vector<int> freq(26,0);
         
-        if(s == t)
+        //if length are different
+        if(s.size() != t.size())
         {
-            return true;
+            return false;
         }
         
-        return false;
+        //store freq of character in s and t
+        for(int i=0; i<s.size();i++)
+        {
+            freq[s[i]-'a']++;
+            freq[t[i]-'a']--;
+            
+        }
+        
+        //checking if freq of character is 0
+        
+        for(int i=0; i<26; i++)
+        {
+            if(freq[i] != 0)
+            {
+                return false;
+            }
+        }
+        
+        return true;
     }
 };
